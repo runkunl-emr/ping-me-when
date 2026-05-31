@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ping-me-when</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header>
+  <h1>ping-me-when</h1>
+  <div style="display:flex; gap:0.8rem; align-items:center;">
+    <select id="lang" style="background:var(--bg-input); color:var(--ink); border:none; border-radius:4px; padding:0.3rem 0.5rem; font-size:0.85rem;">
+      <option value="en">English</option>
+      <option value="zh">中文</option>
+    </select>
+    <div class="status" id="status">checking…</div>
+  </div>
+</header>
+
+<main>
+  <section>
+    <h2 data-i18n="token_h">Discord token</h2>
+    <p class="hint" data-i18n="token_hint">Your token never leaves this machine. It's stored in <code>config.json</code> next to the app.</p>
+    <input type="password" id="token" placeholder="paste your Discord token here" autocomplete="off">
+    <details>
+      <summary data-i18n="token_help">How do I get my token?</summary>
+      <ol data-i18n-html="token_steps">
+        <li>Open Discord in a <strong>browser</strong> (not the desktop app).</li>
+        <li>Press <kbd>Cmd</kbd>+<kbd>Option</kbd>+<kbd>I</kbd> (Mac) or <kbd>F12</kbd> (Win/Linux) to open DevTools.</li>
+        <li>Click the <strong>Network</strong> tab.</li>
+        <li>Click any channel in Discord — requests will appear.</li>
+        <li>Click any request to <code>discord.com/api/...</code> → Headers → find <code>Authorization:</code>.</li>
+        <li>Copy the long string after <code>Authorization:</code> and paste it above.</li>
+      </ol>
+      <p class="hint warn" data-i18n="token_warn">Treat your token like a password. Anyone with it can read every channel you can see.</p>
+    </details>
+  </section>
+
+  <section>
+    <h2 data-i18n="subs_h">What to listen for</h2>
+    <p class="hint" data-i18n="subs_hint">You'll get a notification any time any of the listed users post in the listed channel. Separate multiple usernames with commas or spaces.</p>
+    <table id="subs-table">
+      <thead><tr>
+        <th data-i18n="th_channel">Channel ID</th>
+        <th data-i18n="th_users">Usernames (comma- or space-separated)</th>
+        <th data-i18n="th_label">Label (optional)</th>
+        <th></th>
+      </tr></thead>
+      <tbody id="subs-body"></tbody>
+    </table>
+    <button id="add-sub" data-i18n="add_sub">+ Add subscription</button>
+  </section>
+
+  <section>
+    <h2 data-i18n="notify_h">Notifications</h2>
+    <label><input type="checkbox" id="n-mac" checked> <span data-i18n="notify_mac">macOS desktop notification</span></label>
+    <label class="stack">
+      <span data-i18n="notify_webhook">Discord webhook URL (optional)</span>
+      <input type="text" id="n-webhook" placeholder="https://discord.com/api/webhooks/...">
+    </label>
+    <button id="test-notify" class="ghost" data-i18n="notify_test">Send test notification</button>
+  </section>
+
+  <section class="actions">
+    <button id="save" class="primary" data-i18n="btn_save">Save</button>
+    <button id="start" class="primary" data-i18n="btn_start">Start listening</button>
+    <button id="stop" class="ghost" data-i18n="btn_stop">Stop</button>
+  </section>
+
+  <section>
+    <h2><span data-i18n="hits_h">Recent hits</span> <span id="hits-count" class="hint"></span></h2>
+    <ul id="hits"></ul>
+  </section>
+</main>
+
+<script src="/static/app.js"></script>
+</body>
+</html>
