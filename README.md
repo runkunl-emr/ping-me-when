@@ -1,5 +1,8 @@
 # ping-me-when
 
+[![tests](https://github.com/runkunl-emr/ping-me-when/actions/workflows/ci.yml/badge.svg)](https://github.com/runkunl-emr/ping-me-when/actions/workflows/ci.yml)
+[![license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
 Get a desktop notification any time a specific person posts in a specific Discord channel.
 
 No coding needed. Double-click to start. Configure everything in your browser.
@@ -31,7 +34,11 @@ No coding needed. Double-click to start. Configure everything in your browser.
 ## Quick start (Mac)
 
 1. **Download** this folder (Code → Download ZIP, then unzip).
-2. **Double-click `start.command`**. The first run sets up Python dependencies — takes about 30 seconds.
+2. Pick how you want it to run:
+   - **`start-menubar.command`** *(recommended)* — runs as a small 📨 icon in the macOS menu bar. No visible terminal window. Click → Start / Stop / Open settings. Auto-starts the listener next time you launch if a config is saved.
+   - **`start.command`** — runs in a Terminal window. Closing the window stops the app.
+
+   First run sets up Python dependencies (~30 seconds).
 3. Your browser opens at `http://127.0.0.1:8765/`. Configure:
    - Paste your **Discord token** (instructions below)
    - Add a subscription: **channel ID** + one or more **usernames** (comma- or space-separated)
@@ -144,7 +151,7 @@ If `terminal-notifier` is installed (`brew install terminal-notifier`), clicking
 
 ## Roadmap / TODO
 
-- **macOS menu-bar app** — replace the terminal window with a small icon in the menu bar (using `rumps`). Click → status + start/stop / open settings. Eventually package into a signed `.app` / `.dmg`.
+- **Signed `.app` / `.dmg` bundle** — currently the menu-bar app runs from source via `start-menubar.command`. Wrapping it with `py2app` and Apple-signing it would make distribution truly drag-to-Applications.
 - **Auto-start on login** — install a `launchd` LaunchAgent so the listener boots with the machine.
 - **Mention / keyword filters** — optional regex on top of channel+user.
 - **"Find user by display name"** helper — paste display name, get the matching `username` so users don't have to dig through Discord settings.

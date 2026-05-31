@@ -2,3 +2,5 @@ fastapi>=0.110
 uvicorn[standard]>=0.29
 websocket-client>=1.7
 requests>=2.31
+# macOS-only: menu-bar app. Skipped on other platforms via `sys_platform`.
+rumps>=0.4 ; sys_platform == "darwin"
