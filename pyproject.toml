@@ -1,0 +1,5 @@
+[tool.pytest.ini_options]
+# Make `src` importable from tests without installing the package.
+# `rootdir` (auto-detected) gets prepended to sys.path.
+pythonpath = ["."]
+testpaths = ["tests"]
