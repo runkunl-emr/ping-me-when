@@ -149,6 +149,10 @@ If `terminal-notifier` is installed (`brew install terminal-notifier`), clicking
 - **Mention / keyword filters** — optional regex on top of channel+user.
 - **"Find user by display name"** helper — paste display name, get the matching `username` so users don't have to dig through Discord settings.
 
+## License
+
+MIT — see [LICENSE](LICENSE). Free to fork, modify, and redistribute. No warranty.
+
 ## Security model
 
 - Server binds to `127.0.0.1` only, never to `0.0.0.0`. The host-pinning middleware refuses requests whose `Host:` header isn't `127.0.0.1` or `localhost`.
